@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <title>CDillman.com</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <video playsinline autoplay muted loop id="loop" poster="./poster.jpg">
+      <source src="./loop.mp4" type="video/mp4">
+    </video>
+
+    <video id="video">
+      <source src="./movie.mp4" type="video/mp4">
+    </video>
+
+    <div class="play" id="initial-play" title="enter site"><i class="icono-arrow1-up"></i></div>
+
+    <div class="after">
+      <header>
+        <div id="logo">CDillman</div>
+        <button class="hamburger hamburger--spring" type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </header>
+      <nav>
+        <a href="javascript:void(0);" class="play navplay">Nice to see you</a>
+        <a href="https://www.behance.net/cdillman">See what you think</a>
+        <a href="https://www.linkedin.com/in/cdillman/">Let’s connect</a>
+        <a href="mailto:Design@CDillman.com">Let’s get to work</a>
+      </nav>
+      <section id="content">
+        <p class="contact">Let’s get to work.</p>
+        <a href="mailto:Design@CDillman.com" class="contact">Design@CDillman.com</a>
+        <div class="socials">
+          <a href="https://www.behance.net/cdillman"><img src="./be.svg" alt="behance"></a>
+          <a href="mailto:Design@CDillman.com"><img src="./email.svg" alt="email"></a>
+          <a href="https://www.linkedin.com/in/cdillman/"><img src="./in.svg" alt="linked in"></a>
+        </div>
+        <div class="replay">
+          <button class="play replay"><img src="./reload.svg"></button>
+        </div>
+      </section>
+    </div>
+
+    <script src="./jq.js"></script>
+    <script>
+     
+
+      $(document).ready(function(){
+        var play = document.querySelector('.play');
+        var video = document.querySelector('#video');
+        function playVideo() {
+          console.log('we are going to hit play');
+          $('.hamburger').removeClass('is-active');
+          $('body').removeClass('open');
+
+          $('#video').css({pointerEvents:'initial'});
+          $('#initial-play').animate({opacity:0},function(){
+            $('#initial-play').remove();
+          });
+          $('#video').animate({opacity:1},100,function(){
+            console.log('in');
+            video.play();
+            $('#loop').remove();
+          });
+        }
+        video.onended = function() {
+          console.log('ended');
+          $('#video').animate({opacity:0},100);
+          $('#video').css({pointerEvents:'none'});
+        }
+
+        $('.play').click(function(){
+          playVideo();
+        });
+
+        $('.hamburger').click(function(){
+          $(this).toggleClass('is-active');
+          $('body').toggleClass('open');
+        })
+      });
+    </script>
+
+  </body>
+</html>
