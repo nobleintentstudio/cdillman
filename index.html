@@ -38,13 +38,13 @@
       <section id="content">
         <p class="contact">Let’s get to work.</p>
         <a href="mailto:Design@CDillman.com" class="contact">Design@CDillman.com</a>
-        <div class="socials">
+        <div class="socials" style="opacity:0;">
           <a href="https://www.behance.net/cdillman"><img src="./be.svg" alt="behance"></a>
           <a href="mailto:Design@CDillman.com"><img src="./email.svg" alt="email"></a>
           <a href="https://www.linkedin.com/in/cdillman/"><img src="./in.svg" alt="linked in"></a>
         </div>
-        <div class="replay">
-          <button class="play replay"><img src="./reload.svg"></button>
+        <div class=""  >
+          <button class="play replay" style="opacity:0;"><img src="./reload.svg"></button>
         </div>
       </section>
     </div>
@@ -75,6 +75,10 @@
           console.log('ended');
           $('#video').animate({opacity:0},100);
           $('#video').css({pointerEvents:'none'});
+          window.setTimeout(function(){
+            $('.socials').animate({opacity:1},1000);
+             $('.replay').animate({opacity:1},1000);
+          },1000);
         }
 
         $('.play').click(function(){
@@ -84,7 +88,7 @@
         $('.hamburger').click(function(){
           $(this).toggleClass('is-active');
           $('body').toggleClass('open');
-        })
+        });
       });
     </script>
 
