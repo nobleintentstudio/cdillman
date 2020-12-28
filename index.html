@@ -57,7 +57,7 @@
         var play = document.querySelector('.play');
         var video = document.querySelector('#video');
         function playVideo() {
-          console.log('we are going to hit play');
+          // console.log('we are going to hit play');
           $('.hamburger').removeClass('is-active');
           $('body').removeClass('open');
 
@@ -66,14 +66,14 @@
             $('#initial-play').remove();
           });
           $('#video').animate({opacity:1},100,function(){
-            console.log('in');
+            // console.log('in');
             video.play();
             $('#loop').remove();
           });
         }
         video.onended = function() {
-          console.log('ended');
-          $('#video').animate({opacity:0},100);
+          // console.log('ended');
+          $('#video').animate({opacity:0},1000);
           $('#video').css({pointerEvents:'none'});
           window.setTimeout(function(){
             $('.socials').animate({opacity:1},1000);
